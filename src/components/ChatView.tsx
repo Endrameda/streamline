@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import type { Conversation, Message } from "@/db/schema";
 import { parseSseChunk } from "@/lib/sse";
 
@@ -27,6 +28,7 @@ interface ChatViewProps {
 
 export default function ChatView(props: ChatViewProps) {
   const { conversation, initialMessages } = props;
+  const router = useRouter();
   const [messages, setMessages] = useState<ViewMessage[]>(
     initialMessages.map(toViewMessage),
   );
@@ -99,6 +101,7 @@ export default function ChatView(props: ChatViewProps) {
             );
           } else if (event.type === "done") {
             sawDone = true;
+            router.refresh();
             setMessages((prev) =>
               prev.map((m) =>
                 m.id === assistantId ? { ...m, status: "complete" } : m,
