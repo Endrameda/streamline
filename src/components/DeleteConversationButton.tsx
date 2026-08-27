@@ -3,11 +3,12 @@
 import { useTransition } from "react";
 import { deleteConversationAction } from "@/app/actions";
 
-export default function DeleteConversationButton({
-  conversationId,
-}: {
-  conversationId: string;
-}) {
+interface DeleteConversationButtonProps {
+    conversationId: string;
+}
+
+export default function DeleteConversationButton(props: DeleteConversationButtonProps) {
+    const { conversationId } = props
   const [isPending, startTransition] = useTransition();
 
   return (

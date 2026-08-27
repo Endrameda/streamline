@@ -1,3 +1,4 @@
+import { PropsWithChildren } from "react";
 import Sidebar from "@/components/Sidebar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -20,7 +21,10 @@ export const metadata: Metadata = {
   description: "test Ai chat",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+type RootLayoutProps = PropsWithChildren
+
+export default function RootLayout(props: RootLayoutProps) {
+  const { children } = props
   return (
     <html
       lang="en"
