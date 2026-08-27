@@ -21,7 +21,7 @@ export default function DeleteConversationButton({
           deleteConversationAction(conversationId);
         });
       }}
-      className="shrink-0 rounded-md p-2 text-zinc-400 opacity-0 hover:bg-red-50 hover:text-red-600 group-hover:opacity-100 disabled:opacity-50 dark:hover:bg-red-950"
+      className="shrink-0 rounded-md p-2 text-zinc-400 opacity-0 hover:cursor-pointer hover:bg-red-50 hover:text-red-600 group-hover:opacity-100 disabled:opacity-50 dark:hover:bg-red-950"
     >
       ✕
     </button>

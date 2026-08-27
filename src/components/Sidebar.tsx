@@ -13,7 +13,7 @@ export default async function Sidebar() {
         <form action={createConversationAction}>
           <button
             type="submit"
-            className="w-full rounded-md bg-zinc-900 px-3 py-2 text-sm font-medium text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
+            className="w-full rounded-md bg-zinc-900 px-3 py-2 text-sm font-medium text-white hover:cursor-pointer hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
           >
             + New conversation
           </button>
