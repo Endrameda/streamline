@@ -62,9 +62,6 @@ export async function POST(request: Request) {
 
       let fullText = "";
       let sinceLastPersist = 0;
-      // If the client disconnects, `request.signal` fires — we still want
-      // to persist whatever we've got so a resumed conversation shows a
-      // partial (not silently missing) assistant reply.
       let clientDisconnected = false;
       request.signal.addEventListener("abort", () => {
         clientDisconnected = true;
@@ -113,8 +110,6 @@ export async function POST(request: Request) {
           send({ type: "done", messageId: assistantMessage.id });
         }
       } catch (err) {
-        // Persist whatever partial text we have — completedAt stays null,
-        // which the UI reads as "this reply was cut short."
         await updateMessageContent(assistantMessage.id, fullText, false);
         await touchConversation(conversationId);
         if (!clientDisconnected) {

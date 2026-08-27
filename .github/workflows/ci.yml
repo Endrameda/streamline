@@ -3,12 +3,9 @@ name: CI
 on:
   push:
     branches: [main]
-  # pull_request:
+  pull_request:
 
 env:
-  # Dummy values so module-level env checks don't fail during build/typecheck.
-  # No real DB/API calls happen in these steps — the app is fully dynamic
-  # (see src/app/layout.tsx), so `next build` never executes route code.
   DATABASE_URL: "postgresql://user:pass@localhost:5432/streamline"
   ANTHROPIC_API_KEY: "sk-ant-dummy"
 
