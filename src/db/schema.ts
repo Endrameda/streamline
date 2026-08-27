@@ -34,7 +34,6 @@ export const conversations = pgTable(
       .defaultNow(),
   },
   (table) => [
-    // Listing a user's conversations ordered by recency is the hot path (sidebar).
     index("conversations_user_id_updated_at_idx").on(
       table.userId,
       table.updatedAt,
@@ -58,7 +57,6 @@ export const messages = pgTable(
       .defaultNow(),
   },
   (table) => [
-    // Loading a conversation's transcript in order is the other hot path.
     index("messages_conversation_id_created_at_idx").on(
       table.conversationId,
       table.createdAt,
